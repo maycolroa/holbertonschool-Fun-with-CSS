@@ -1,0 +1,23 @@
+:root {
+    --color-primary: #d73953;
+    --color-black: #090909;
+    --color-white: #ffffff;
+}
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+a::before {
+    content: '';
+    position: absolute;
+    bottom: 38rem;
+    background-color: var(--color-primary);
+    width: 0;
+    height: 0.19rem;
+    transition: .4s cubic-bezier(0.17, 0.67, 0, 1.01);
+}
+
+a:hover::before {
+    width: 8.3%;
+}

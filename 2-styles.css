@@ -1,0 +1,104 @@
+:root {
+    --color-primary: #d73953;
+    --color-secundari: #eb86b9;
+    --color-terciari:  #ebebeb;
+    --color-cuaternari: #c3c3c3  ;
+    --color-black: #090909;
+    --color-white: #ffffff;
+}
+.toggle {
+    position: relative;
+    counter-increment: switchCounter;
+    display: inline-block;
+}
+
+.toggle .toggle-cb {
+    display: none;
+}
+.toggle::before {
+content: counter(switchCounter);
+position: absolute;
+top: 80%;
+left: -30px;
+transform: translateY(-50%);
+font-size: 4rem;
+font-weight: bolder;
+color: var(--color-secundari);
+}
+
+.toggle .toggle-label {
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.toggle-switch {
+position: relative;
+width: 80px; 
+height: 26px; 
+border-radius: 15px;
+background: var(--color-terciari);
+transition: all 0.3s;
+border: 2px solid var(--color-cuaternari);
+}
+
+.toggle-switch::before, .toggle-switch::after {
+content: "";
+position: absolute;
+}
+
+.toggle-switch::before {
+    left: -2px; 
+    top: -4px;   
+    width: 32px; 
+    height: 32px; 
+    background: var(--color-white);
+    border-radius: 50%;
+    z-index: 1;
+    transition: transform 0.3s;
+    border: 1px solid var(--color-cuaternari);
+}
+
+.toggle-switch::after {
+top: 50%;
+right: 8px;
+width: 12px;
+height: 12px;
+transform: translateY(-50%);
+background: url(uncheck-switcher.svg);
+background-size: 12px 12px;
+}
+
+.toggle [type="checkbox"]:checked + .toggle-label .toggle-switch {
+    background: var(--color-primary);
+}
+
+.toggle [type="checkbox"]:checked + .toggle-label .toggle-switch::before {
+    transform: translateX(50px);
+}
+
+.toggle [type="checkbox"]:checked + .toggle-label .toggle-switch::after {
+    width: 14px;
+    height: 14px;
+    left: 4px;
+    background-image: url(checkmark-switcher.svg);
+    background-size: 14px 14px;
+}
+.toggle-inner::before {
+    position: absolute;
+    content: "No";
+    left: 45px;
+    bottom: 5.5px;
+    z-index: 1;
+    color: var(--color-cuaternari);
+    font-family: Arial, Helvetica, sans-serif;
+}
+.toggle [type="checkbox"]:checked + .toggle-label .toggle-inner::before {
+    position: absolute;
+    left: 13px;
+    bottom: 5.5px;
+    z-index: 1;
+    content: "Yes";
+    color: var(--color-white);
+    font-family: Arial, Helvetica, sans-serif;
+}
